@@ -15,6 +15,8 @@ install-d2-cu111 = "python -m pip install detectron2 -f https://dl.fbaipublicfil
 install-d2-cu113 = "python -m pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html"
 # Fallback: build from source (ensure gcc/g++>=5.4)
 install-d2-source = "python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'"
+# Add libg11
+install-libg11 = "sudo apt-get install libgl1-mesa-glx"
 
 [feature.main.dependencies]
 python = ">=3.8,<3.12"
@@ -28,7 +30,6 @@ cloudpickle = "*"
 pillow = "*"
 imagesize = "*"
 tensorboard = ">=2.0.0"
-opencv = "*"
 pycocotools = "*"
 fvcore = "*"
 iopath = "*"
@@ -49,6 +50,7 @@ cudatoolkit = "11.3.*"
 
 [pypi-dependencies]
 lvis = "*"
+opencv-contrib-python-headless = "*"
 
 [environments]
 cpu = { features = ["main", "cpu"] }
