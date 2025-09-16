@@ -1,5 +1,8 @@
 # All coco categories, together with their nice-looking visualization colors
 # It's from https://github.com/cocodataset/panopticapi/blob/master/panoptic_coco_categories.json
+from typing import Dict, List
+
+
 COCO_CATEGORIES = [
     {"color": [220, 20, 60], "isthing": 1, "id": 1, "name": "person"},
     {"color": [119, 11, 32], "isthing": 1, "id": 2, "name": "bicycle"},
@@ -221,6 +224,191 @@ COCO_CATEGORIES = [
     {"color": [250, 141, 255], "isthing": 0, "id": 200, "name": "rug-merged"},
 ]
 
+COCO_TD_CATEGORIES = [
+    {"color": [220, 20, 60], "isthing": 1, "id": 0, "name": "eng-drawings", "supercategory": "none"},
+    {"color": [119, 11, 32], "isthing": 1, "id": 1, "name": "1", "supercategory": "eng-drawings"},
+    {"color": [0, 0, 142], "isthing": 1, "id": 2, "name": "2", "supercategory": "eng-drawings"},
+    {"color": [0, 0, 230], "isthing": 1, "id": 3, "name": "3", "supercategory": "eng-drawings"},
+    {"color": [106, 0, 228], "isthing": 1, "id": 4, "name": "4", "supercategory": "eng-drawings"},
+    {"color": [0, 60, 100], "isthing": 1, "id": 5, "name": "5", "supercategory": "eng-drawings"},
+    {"color": [0, 80, 100], "isthing": 1, "id": 6, "name": "6", "supercategory": "eng-drawings"},
+    {"color": [0, 0, 70], "isthing": 1, "id": 7, "name": "7", "supercategory": "eng-drawings"},
+    {"color": [0, 0, 192], "isthing": 1, "id": 8, "name": "8", "supercategory": "eng-drawings"},
+    {"color": [250, 170, 30], "isthing": 1, "id": 9, "name": "9", "supercategory": "eng-drawings"},
+    {"color": [100, 170, 30], "isthing": 1, "id": 10, "name": "10", "supercategory": "eng-drawings"},
+    {"color": [220, 220, 0], "isthing": 1, "id": 11, "name": "A", "supercategory": "eng-drawings"},
+    {"color": [175, 116, 175], "isthing": 1, "id": 12, "name": "B", "supercategory": "eng-drawings"},
+    {"color": [250, 0, 30], "isthing": 1, "id": 13, "name": "C", "supercategory": "eng-drawings"},
+    {"color": [165, 42, 42], "isthing": 1, "id": 14, "name": "D", "supercategory": "eng-drawings"},
+    {"color": [255, 77, 255], "isthing": 1, "id": 15, "name": "E", "supercategory": "eng-drawings"},
+    {"color": [0, 226, 252], "isthing": 1, "id": 16, "name": "F", "supercategory": "eng-drawings"},
+    {"color": [182, 182, 255], "isthing": 1, "id": 17, "name": "G", "supercategory": "eng-drawings"},
+    {"color": [0, 82, 0], "isthing": 1, "id": 18, "name": "H", "supercategory": "eng-drawings"},
+    {
+        "color": [120, 166, 157],
+        "isthing": 1,
+        "id": 19,
+        "name": "angularity",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [110, 76, 0], "isthing": 1, "id": 20, "name": "between", "supercategory": "eng-drawings"},
+    {
+        "color": [174, 57, 255],
+        "isthing": 0,
+        "id": 21,
+        "name": "circ runout",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [199, 100, 0],
+        "isthing": 1,
+        "id": 22,
+        "name": "concentricity",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [72, 0, 118],
+        "isthing": 1,
+        "id": 23,
+        "name": "counterbore",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [255, 179, 240],
+        "isthing": 1,
+        "id": 24,
+        "name": "countersink",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [0, 125, 92],
+        "isthing": 1,
+        "id": 25,
+        "name": "cylindricity",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [209, 0, 151], "isthing": 1, "id": 26, "name": "depth", "supercategory": "eng-drawings"},
+    {
+        "color": [188, 208, 182],
+        "isthing": 1,
+        "id": 27,
+        "name": "diameter",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [0, 220, 176],
+        "isthing": 1,
+        "id": 28,
+        "name": "flatness",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [255, 99, 164], "isthing": 1, "id": 29, "name": "line", "supercategory": "eng-drawings"},
+    {"color": [92, 0, 73], "isthing": 1, "id": 30, "name": "mat_max", "supercategory": "eng-drawings"},
+    {
+        "color": [133, 129, 255],
+        "isthing": 1,
+        "id": 31,
+        "name": "parallelism",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [78, 180, 255],
+        "isthing": 1,
+        "id": 32,
+        "name": "perpendicularity",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [0, 228, 0], "isthing": 1, "id": 33, "name": "position", "supercategory": "eng-drawings"},
+    {
+        "color": [174, 255, 243],
+        "isthing": 1,
+        "id": 34,
+        "name": "profile",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [45, 89, 255], "isthing": 1, "id": 35, "name": "radius", "supercategory": "eng-drawings"},
+    {
+        "color": [134, 134, 103],
+        "isthing": 1,
+        "id": 36,
+        "name": "runout",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [145, 148, 174], "isthing": 1, "id": 37, "name": "slope", "supercategory": "eng-drawings"},
+    {
+        "color": [255, 208, 186],
+        "isthing": 1,
+        "id": 38,
+        "name": "surface",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [197, 226, 255],
+        "isthing": 1,
+        "id": 39,
+        "name": "tangent",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [171, 134, 1], "isthing": 1, "id": 40, "name": "target", "supercategory": "eng-drawings"},
+    {"color": [109, 63, 54], "isthing": 1, "id": 41, "name": "through", "supercategory": "eng-drawings"},
+]
+
+COCO_TD_NOVEL_CATEGORIES = [
+    {"color": [145, 148, 174], "isthing": 1, "id": 37, "name": "slope", "supercategory": "eng-drawings"},
+    {
+        "color": [255, 208, 186],
+        "isthing": 1,
+        "id": 38,
+        "name": "surface",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [197, 226, 255],
+        "isthing": 1,
+        "id": 39,
+        "name": "tangent",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [120, 166, 157],
+        "isthing": 1,
+        "id": 19,
+        "name": "angularity",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [110, 76, 0], "isthing": 1, "id": 20, "name": "between", "supercategory": "eng-drawings"},
+    {
+        "color": [0, 125, 92],
+        "isthing": 1,
+        "id": 25,
+        "name": "cylindricity",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [199, 100, 0],
+        "isthing": 1,
+        "id": 22,
+        "name": "concentricity",
+        "supercategory": "eng-drawings",
+    },
+    {"color": [255, 99, 164], "isthing": 1, "id": 29, "name": "line", "supercategory": "eng-drawings"},
+    {
+        "color": [78, 180, 255],
+        "isthing": 1,
+        "id": 32,
+        "name": "perpendicularity",
+        "supercategory": "eng-drawings",
+    },
+    {
+        "color": [134, 134, 103],
+        "isthing": 1,
+        "id": 36,
+        "name": "runout",
+        "supercategory": "eng-drawings",
+    },
+]
+
+
 # Novel COCO categories
 COCO_NOVEL_CATEGORIES = [
     {"color": [220, 20, 60], "isthing": 1, "id": 1, "name": "person"},
@@ -376,13 +564,13 @@ PASCAL_VOC_BASE_CATEGORIES = {
 }
 
 
-def _get_coco_instances_meta():
-    thing_ids = [k["id"] for k in COCO_CATEGORIES if k["isthing"] == 1]
-    thing_colors = [k["color"] for k in COCO_CATEGORIES if k["isthing"] == 1]
-    assert len(thing_ids) == 80, len(thing_ids)
+def _get_coco_instances_meta(categories: List[Dict]):
+    thing_ids = [k["id"] for k in categories if k["isthing"] == 1]
+    thing_colors = [k["color"] for k in categories if k["isthing"] == 1]
+    # assert len(thing_ids) == 80, len(thing_ids)
     # Mapping from the incontiguous COCO category id to an id in [0, 79]
     thing_dataset_id_to_contiguous_id = {k: i for i, k in enumerate(thing_ids)}
-    thing_classes = [k["name"] for k in COCO_CATEGORIES if k["isthing"] == 1]
+    thing_classes = [k["name"] for k in categories if k["isthing"] == 1]
     ret = {
         "thing_dataset_id_to_contiguous_id": thing_dataset_id_to_contiguous_id,
         "thing_classes": thing_classes,
@@ -391,24 +579,16 @@ def _get_coco_instances_meta():
     return ret
 
 
-def _get_coco_fewshot_instances_meta():
-    ret = _get_coco_instances_meta()
-    novel_ids = [k["id"] for k in COCO_NOVEL_CATEGORIES if k["isthing"] == 1]
+def _get_coco_fewshot_instances_meta(categories: List[Dict], novel_categories: List[Dict]):
+    ret = _get_coco_instances_meta(categories)
+    novel_ids = [k["id"] for k in novel_categories if k["isthing"] == 1]
     novel_dataset_id_to_contiguous_id = {k: i for i, k in enumerate(novel_ids)}
-    novel_classes = [
-        k["name"] for k in COCO_NOVEL_CATEGORIES if k["isthing"] == 1
-    ]
-    base_categories = [
-        k
-        for k in COCO_CATEGORIES
-        if k["isthing"] == 1 and k["name"] not in novel_classes
-    ]
+    novel_classes = [k["name"] for k in novel_categories if k["isthing"] == 1]
+    base_categories = [k for k in categories if k["isthing"] == 1 and k["name"] not in novel_classes]
     base_ids = [k["id"] for k in base_categories]
     base_dataset_id_to_contiguous_id = {k: i for i, k in enumerate(base_ids)}
     base_classes = [k["name"] for k in base_categories]
-    ret[
-        "novel_dataset_id_to_contiguous_id"
-    ] = novel_dataset_id_to_contiguous_id
+    ret["novel_dataset_id_to_contiguous_id"] = novel_dataset_id_to_contiguous_id
     ret["novel_classes"] = novel_classes
     ret["base_dataset_id_to_contiguous_id"] = base_dataset_id_to_contiguous_id
     ret["base_classes"] = base_classes
@@ -420,13 +600,11 @@ def _get_lvis_instances_meta_v0_5():
 
     assert len(LVIS_CATEGORIES) == 1230
     cat_ids = [k["id"] for k in LVIS_CATEGORIES]
-    assert min(cat_ids) == 1 and max(cat_ids) == len(
-        cat_ids
-    ), "Category ids are not in [1, #categories], as expected"
+    assert min(cat_ids) == 1 and max(cat_ids) == len(cat_ids), (
+        "Category ids are not in [1, #categories], as expected"
+    )
     # Ensure that the category list is sorted by id
-    lvis_categories = [
-        k for k in sorted(LVIS_CATEGORIES, key=lambda x: x["id"])
-    ]
+    lvis_categories = sorted(LVIS_CATEGORIES, key=lambda x: x["id"])
     thing_classes = [k["synonyms"][0] for k in lvis_categories]
     meta = {"thing_classes": thing_classes}
     return meta
@@ -436,9 +614,7 @@ def _get_lvis_fewshot_instances_meta_v0_5():
     from .lvis_v0_5_categories import LVIS_CATEGORIES_NOVEL
 
     all_cats = _get_lvis_instances_meta_v0_5()["thing_classes"]
-    lvis_categories_sub = [
-        k for k in sorted(LVIS_CATEGORIES_NOVEL, key=lambda x: x["id"])
-    ]
+    lvis_categories_sub = sorted(LVIS_CATEGORIES_NOVEL, key=lambda x: x["id"])
     sub_cats = [k["synonyms"][0] for k in lvis_categories_sub]
     mapping = {all_cats.index(c): i for i, c in enumerate(sub_cats)}
     meta = {"thing_classes": sub_cats, "class_mapping": mapping}
@@ -455,15 +631,21 @@ def _get_pascal_voc_fewshot_instances_meta():
     return ret
 
 
-def _get_builtin_metadata(dataset_name):
+def _get_builtin_metadata(dataset_name, categories: List[Dict], novel_categories: List[Dict]):
     if dataset_name == "coco":
         return _get_coco_instances_meta()
     elif dataset_name == "coco_fewshot":
-        return _get_coco_fewshot_instances_meta()
+        return _get_coco_fewshot_instances_meta(categories, novel_categories)
     elif dataset_name == "lvis_v0.5":
         return _get_lvis_instances_meta_v0_5()
     elif dataset_name == "lvis_v0.5_fewshot":
         return _get_lvis_fewshot_instances_meta_v0_5()
     elif dataset_name == "pascal_voc_fewshot":
         return _get_pascal_voc_fewshot_instances_meta()
-    raise KeyError("No built-in metadata for dataset {}".format(dataset_name))
+    raise KeyError(f"No built-in metadata for dataset {dataset_name}")
+
+
+if __name__ == "__main__":
+    # print(_get_builtin_metadata("coco_fewshot", COCO_CATEGORIES, COCO_NOVEL_CATEGORIES))
+    print(_get_coco_fewshot_instances_meta(COCO_TD_CATEGORIES, COCO_TD_NOVEL_CATEGORIES))
+    

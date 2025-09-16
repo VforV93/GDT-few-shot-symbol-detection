@@ -5,6 +5,7 @@ import os
 import numpy as np
 from detectron2.data import DatasetCatalog, MetadataCatalog
 from detectron2.structures import BoxMode
+from fsdet.data.builtin_meta import COCO_TD_CATEGORIES, COCO_TD_NOVEL_CATEGORIES, _get_coco_fewshot_instances_meta
 from fsdet.utils.file_io import PathManager
 from pycocotools.coco import COCO
 
@@ -141,3 +142,7 @@ def register_meta_coco(name, metadata, imgdir, annofile):
         dirname="datasets/coco",
         **metadata,
     )
+
+
+if __name__ == "__main__":
+    print(load_coco_json("/home/rnd/projects/GDT-few-shot-symbol-detection/gdt_symbols.v23i.coco/train/_annotations.coco.json", "/home/rnd/projects/GDT-few-shot-symbol-detection/gdt_symbols.v23i.coco/train", _get_coco_fewshot_instances_meta(COCO_TD_CATEGORIES, COCO_TD_NOVEL_CATEGORIES), "coco_gdt_train",))
