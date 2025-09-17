@@ -14,7 +14,7 @@ This file contains functions to parse COCO-format annotations into dicts in "Det
 """
 
 
-__all__ = ["register_meta_coco"]
+__all__ = ["register_meta_coco", "register_meta_coco_gdt"]
 
 
 def load_coco_json(json_file, image_root, metadata, dataset_name):
@@ -38,7 +38,7 @@ def load_coco_json(json_file, image_root, metadata, dataset_name):
     is_shots = "shot" in dataset_name
     if is_shots:
         fileids = {}
-        split_dir = os.path.join("datasets", "cocosplit")
+        split_dir = os.path.join("datasets", "cocogdtsplit")
         if "seed" in dataset_name:
             shot = dataset_name.split("_")[-2].split("shot")[0]
             seed = int(dataset_name.split("_seed")[-1])

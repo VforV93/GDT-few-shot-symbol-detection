@@ -96,20 +96,31 @@ def register_all_coco(root="datasets"):
         ("coco_test_all", "coco/val2014", "cocosplit/datasplit/5k.json"),
         ("coco_test_base", "coco/val2014", "cocosplit/datasplit/5k.json"),
         ("coco_test_novel", "coco/val2014", "cocosplit/datasplit/5k.json"),
+        ("coco_gdt_train", "coco/gdt/train", "coco/gdt/train/_annotations.coco.json"),
+        ("coco_gdt_val", "coco/gdt/val", "coco/gdt/val/_annotations.coco.json"),
+        ("coco_gdt_test", "coco/gdt/test", "coco/gdt/test/_annotations.coco.json"),
     ]
 
-    # register small meta datasets for fine-tuning stage
-    for prefix in ["all", "novel"]:
-        for shot in [1, 2, 3, 5, 10, 30]:
+    # register small meta datasets for fine-tuning stage - COCO-GDT
+    for prefix in ["all"]:
+        for shot in [6]:
             for seed in range(10):
                 seed = "" if seed == 0 else "_seed{}".format(seed)
-                name = "coco_trainval_{}_{}shot{}".format(prefix, shot, seed)
-                METASPLITS.append((name, "coco/trainval2014", ""))
+                name = "coco_gdt_trainval_{}_{}shot{}".format(prefix, shot, seed)
+                METASPLITS.append((name, "coco/gdt/trainval", "coco/gdt/trainval/_annotations.coco.json"))
+
+    # # register small meta datasets for fine-tuning stage
+    # for prefix in ["all", "novel"]:
+    #     for shot in [1, 2, 3, 5, 10, 30]:
+    #         for seed in range(10):
+    #             seed = "" if seed == 0 else "_seed{}".format(seed)
+    #             name = "coco_trainval_{}_{}shot{}".format(prefix, shot, seed)
+    #             METASPLITS.append((name, "coco/trainval2014", ""))
 
     for name, imgdir, annofile in METASPLITS:
         register_meta_coco(
             name,
-            _get_builtin_metadata("coco_fewshot"),
+            _get_builtin_metadata("coco_gdt"),
             os.path.join(root, imgdir),
             os.path.join(root, annofile),
         )

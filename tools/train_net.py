@@ -25,6 +25,7 @@ from fsdet.config import get_cfg, set_global_cfg
 from fsdet.engine import DefaultTrainer, default_argument_parser, default_setup
 from fsdet.evaluation import (
     COCOEvaluator,
+    COCOTDEvaluator,
     DatasetEvaluators,
     LVISEvaluator,
     PascalVOCDetectionEvaluator,
@@ -53,13 +54,16 @@ class Trainer(DefaultTrainer):
         evaluator_list = []
         evaluator_type = MetadataCatalog.get(dataset_name).evaluator_type
         if evaluator_type == "coco":
-            evaluator_list.append(
-                COCOEvaluator(dataset_name, cfg, True, output_folder)
-            )
+            # evaluator_list.append(
+            #     COCOEvaluator(dataset_name, cfg, True, output_folder)
+            # )
+            return COCOTDEvaluator(dataset_name, cfg, True, output_folder)
         if evaluator_type == "pascal_voc":
             return PascalVOCDetectionEvaluator(dataset_name)
         if evaluator_type == "lvis":
             return LVISEvaluator(dataset_name, cfg, True, output_folder)
+        # if evaluator_type == "coco_gdt":
+        #     return COCOTDEvaluator(dataset_name, cfg, False, output_folder)
         if len(evaluator_list) == 0:
             raise NotImplementedError(
                 "no Evaluator for the dataset {} with the type {}".format(

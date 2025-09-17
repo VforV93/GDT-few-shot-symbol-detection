@@ -1,4 +1,5 @@
 from .coco_evaluation import COCOEvaluator
+from .coco_td_evaluation import COCOTDEvaluator
 from .evaluator import (
     DatasetEvaluator,
     DatasetEvaluators,

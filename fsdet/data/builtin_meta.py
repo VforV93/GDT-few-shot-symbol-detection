@@ -225,7 +225,7 @@ COCO_CATEGORIES = [
 ]
 
 COCO_TD_CATEGORIES = [
-    {"color": [220, 20, 60], "isthing": 1, "id": 0, "name": "eng-drawings", "supercategory": "none"},
+    # {"color": [220, 20, 60], "isthing": 1, "id": 0, "name": "eng-drawings", "supercategory": "none"},
     {"color": [119, 11, 32], "isthing": 1, "id": 1, "name": "1", "supercategory": "eng-drawings"},
     {"color": [0, 0, 142], "isthing": 1, "id": 2, "name": "2", "supercategory": "eng-drawings"},
     {"color": [0, 0, 230], "isthing": 1, "id": 3, "name": "3", "supercategory": "eng-drawings"},
@@ -342,13 +342,13 @@ COCO_TD_CATEGORIES = [
         "name": "surface",
         "supercategory": "eng-drawings",
     },
-    {
-        "color": [197, 226, 255],
-        "isthing": 1,
-        "id": 39,
-        "name": "tangent",
-        "supercategory": "eng-drawings",
-    },
+    # {
+    #     "color": [197, 226, 255],
+    #     "isthing": 1,
+    #     "id": 39,
+    #     "name": "tangent",
+    #     "supercategory": "eng-drawings",
+    # },
     {"color": [171, 134, 1], "isthing": 1, "id": 40, "name": "target", "supercategory": "eng-drawings"},
     {"color": [109, 63, 54], "isthing": 1, "id": 41, "name": "through", "supercategory": "eng-drawings"},
 ]
@@ -631,11 +631,13 @@ def _get_pascal_voc_fewshot_instances_meta():
     return ret
 
 
-def _get_builtin_metadata(dataset_name, categories: List[Dict], novel_categories: List[Dict]):
+def _get_builtin_metadata(dataset_name):
     if dataset_name == "coco":
         return _get_coco_instances_meta()
+    elif dataset_name == "coco_gdt":
+        return _get_coco_fewshot_instances_meta(COCO_TD_CATEGORIES, COCO_TD_NOVEL_CATEGORIES)
     elif dataset_name == "coco_fewshot":
-        return _get_coco_fewshot_instances_meta(categories, novel_categories)
+        return _get_coco_fewshot_instances_meta()
     elif dataset_name == "lvis_v0.5":
         return _get_lvis_instances_meta_v0_5()
     elif dataset_name == "lvis_v0.5_fewshot":
@@ -645,7 +647,7 @@ def _get_builtin_metadata(dataset_name, categories: List[Dict], novel_categories
     raise KeyError(f"No built-in metadata for dataset {dataset_name}")
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # print(_get_builtin_metadata("coco_fewshot", COCO_CATEGORIES, COCO_NOVEL_CATEGORIES))
-    print(_get_coco_fewshot_instances_meta(COCO_TD_CATEGORIES, COCO_TD_NOVEL_CATEGORIES))
+    # print(_get_coco_fewshot_instances_meta(COCO_TD_CATEGORIES, COCO_TD_NOVEL_CATEGORIES))
     
