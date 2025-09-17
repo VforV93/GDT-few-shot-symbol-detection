@@ -252,13 +252,13 @@ COCO_TD_CATEGORIES = [
         "supercategory": "eng-drawings",
     },
     {"color": [110, 76, 0], "isthing": 1, "id": 20, "name": "between", "supercategory": "eng-drawings"},
-    {
-        "color": [174, 57, 255],
-        "isthing": 0,
-        "id": 21,
-        "name": "circ runout",
-        "supercategory": "eng-drawings",
-    },
+    # {
+    #     "color": [174, 57, 255],
+    #     "isthing": 0,
+    #     "id": 21,
+    #     "name": "circ runout",
+    #     "supercategory": "eng-drawings",
+    # },
     {
         "color": [199, 100, 0],
         "isthing": 1,
@@ -362,13 +362,13 @@ COCO_TD_NOVEL_CATEGORIES = [
         "name": "surface",
         "supercategory": "eng-drawings",
     },
-    {
-        "color": [197, 226, 255],
-        "isthing": 1,
-        "id": 39,
-        "name": "tangent",
-        "supercategory": "eng-drawings",
-    },
+    # {
+    #     "color": [197, 226, 255],
+    #     "isthing": 1,
+    #     "id": 39,
+    #     "name": "tangent",
+    #     "supercategory": "eng-drawings",
+    # },
     {
         "color": [120, 166, 157],
         "isthing": 1,

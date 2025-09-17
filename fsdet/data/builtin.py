@@ -98,7 +98,7 @@ def register_all_coco(root="datasets"):
         ("coco_test_novel", "coco/val2014", "cocosplit/datasplit/5k.json"),
         ("coco_gdt_train", "coco/gdt/train", "coco/gdt/train/_annotations.coco.json"),
         ("coco_gdt_val", "coco/gdt/val", "coco/gdt/val/_annotations.coco.json"),
-        ("coco_gdt_test", "coco/gdt/test", "coco/gdt/test/_annotations.coco.json"),
+        ("coco_gdt_test", "coco/gdt/test-40", "coco/gdt/test-40/_annotations.coco.json"),
     ]
 
     # register small meta datasets for fine-tuning stage - COCO-GDT
